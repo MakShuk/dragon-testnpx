@@ -127,7 +127,7 @@ const DragonTest = () => {
   const findPrimaryDragons = () => {
     return Object.entries(answers)
       .sort((a, b) => b[1] - a[1])
-      .slice(0, 3)
+      .slice(0, 7)
       .filter(([_, count]) => count > 0);
   };
 
@@ -144,20 +144,16 @@ const DragonTest = () => {
       <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">Результат теста</h2>
         <div>
-          <p className="mb-4">Ваши основные драконы:</p>
+          <p className="mb-3">Количество баллов по всем драконам:</p>
           {primaryDragons.map(([dragon, count], index) => (
-            <p key={dragon} className={`font-semibold ${index === 0 ? 'text-xl' : 'text-lg'} mb-2`}>
+            <p
+              key={dragon}
+              className={`mb-2`}
+            >
               {index + 1}. {dragon} ({count} баллов)
             </p>
           ))}
-          <p className="mt-4">Количество ответов по всем драконам:</p>
-          <ul>
-            {Object.entries(answers).map(([dragon, count]) => (
-              <li key={dragon} className="mt-2">
-                {dragon}: {count}
-              </li>
-            ))}
-          </ul>
+       
         </div>
         <button
           onClick={resetTest}
