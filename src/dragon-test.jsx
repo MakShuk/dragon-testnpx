@@ -131,6 +131,19 @@ const DragonTest = () => {
       .filter(([_, count]) => count > 0);
   };
 
+  function getDeclension(count, one, two, five) {
+    if (count % 100 > 10 && count % 100 < 20) {
+      return five;
+    }
+    if (count % 10 === 1) {
+      return one;
+    }
+    if (count % 10 >= 2 && count % 10 <= 4) {
+      return two;
+    }
+    return five;
+  }
+
   const resetTest = () => {
     setCurrentDragon(0);
     setCurrentQuestion(0);
@@ -146,14 +159,11 @@ const DragonTest = () => {
         <div>
           <p className="mb-3">Количество баллов по драконам:</p>
           {primaryDragons.map(([dragon, count], index) => (
-            <p
-              key={dragon}
-              className={`mb-2`}
-            >
-              {index + 1}. {dragon} ({count} баллов)
+            <p key={dragon} className={`mb-2`}>
+              {index + 1}. {dragon} ({count}{" "}
+              {getDeclension(count, "балл", "балла", "баллов")})
             </p>
           ))}
-       
         </div>
         <button
           onClick={resetTest}
