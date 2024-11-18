@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/dragon-testnpx/static/css/main.b46581b2.css",
-    "main.js": "/dragon-testnpx/static/js/main.fdbf4baa.js",
+    "main.css": "/dragon-testnpx/static/css/main.cbb831bc.css",
+    "main.js": "/dragon-testnpx/static/js/main.2022bf35.js",
     "static/js/453.3bce5338.chunk.js": "/dragon-testnpx/static/js/453.3bce5338.chunk.js",
     "static/media/logo.svg": "/dragon-testnpx/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
     "index.html": "/dragon-testnpx/index.html",
-    "main.b46581b2.css.map": "/dragon-testnpx/static/css/main.b46581b2.css.map",
-    "main.fdbf4baa.js.map": "/dragon-testnpx/static/js/main.fdbf4baa.js.map",
+    "main.cbb831bc.css.map": "/dragon-testnpx/static/css/main.cbb831bc.css.map",
+    "main.2022bf35.js.map": "/dragon-testnpx/static/js/main.2022bf35.js.map",
     "453.3bce5338.chunk.js.map": "/dragon-testnpx/static/js/453.3bce5338.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.b46581b2.css",
-    "static/js/main.fdbf4baa.js"
+    "static/css/main.cbb831bc.css",
+    "static/js/main.2022bf35.js"
   ]
 }
