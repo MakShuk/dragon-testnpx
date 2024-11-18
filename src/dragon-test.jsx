@@ -124,11 +124,11 @@ const DragonTest = () => {
     }
   };
 
-  const findPrimaryDragon = () => {
-    return Object.entries(answers).reduce(
-      (a, b) => (b[1] > a[1] ? b : a),
-      ["", 0]
-    )[0];
+  const findPrimaryDragons = () => {
+    return Object.entries(answers)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .filter(([_, count]) => count > 0);
   };
 
   const resetTest = () => {
@@ -139,15 +139,18 @@ const DragonTest = () => {
   };
 
   if (testCompleted) {
-    const primaryDragon = findPrimaryDragon();
+    const primaryDragons = findPrimaryDragons();
     return (
       <div className="max-w-md mx-auto mt-10 p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4">Результат теста</h2>
         <div>
-          <p>
-            Ваш основной дракон: <strong>{primaryDragon}</strong>
-          </p>
-          <p className="mt-4">Количество ответов по каждому дракону:</p>
+          <p className="mb-4">Ваши основные драконы:</p>
+          {primaryDragons.map(([dragon, count], index) => (
+            <p key={dragon} className={`font-semibold ${index === 0 ? 'text-xl' : 'text-lg'} mb-2`}>
+              {index + 1}. {dragon} ({count} баллов)
+            </p>
+          ))}
+          <p className="mt-4">Количество ответов по всем драконам:</p>
           <ul>
             {Object.entries(answers).map(([dragon, count]) => (
               <li key={dragon} className="mt-2">
