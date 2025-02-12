@@ -131,10 +131,10 @@ const Results = ({ results, onReset }) => {
           className="pt-4"
         >
           <Button
-            variant="primary"
+            variant="dragon"
             fullWidth
             onClick={onReset}
-            className="transition-all hover:scale-105"
+            className="shadow-lg backdrop-blur-sm"
           >
             Пройти тест заново
           </Button>
