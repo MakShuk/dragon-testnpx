@@ -5,6 +5,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import "tailwindcss/tailwind.css";
 
+// Функция для обновления CSS-переменной --vh
+const updateVh = () => {
+  const vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty('--vh', `${vh}px`);
+};
+
+// Обновляем --vh при загрузке
+updateVh();
+
+// Обновляем --vh при изменении размера окна
+window.addEventListener('resize', updateVh);
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>

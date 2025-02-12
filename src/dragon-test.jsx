@@ -56,7 +56,6 @@ const DragonTest = () => {
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
-          style={{ height: "clamp(150px, 30vh, 500px)" }}
           className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
         >
           Тест на определение ваших драконов
