@@ -16,7 +16,7 @@ function App() {
   }, []);
 
   return (
-    <div className={`App ${!isReady ? 'no-animation' : ''}`}>
+    <div className={`App min-h-screen flex items-center justify-center ${!isReady ? 'no-animation' : ''}`}>
       <DragonTest />
     </div>
   );

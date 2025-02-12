@@ -33,6 +33,12 @@ const Question = ({
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={animationConfig}
+          style={{ 
+            height: "90px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center"
+          }}
         >
           <p className="text-lg font-medium text-gray-800">{question}</p>
         </motion.div>

@@ -17,7 +17,7 @@ const Card = ({ children, className = '', title }) => {
       exit={{ opacity: 0, y: -20 }}
       transition={{ duration: 0.3, ease: 'easeOut' }}
       className={cn(
-        'max-w-md mx-auto mt-10 p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg',
+        'max-w-md mx-auto p-6 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg',
         'border border-gray-100',
         'backdrop-blur-sm',
         'hover:shadow-xl transition-shadow duration-300',
