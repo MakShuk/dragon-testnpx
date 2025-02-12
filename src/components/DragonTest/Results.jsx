@@ -107,7 +107,7 @@ const Results = ({ results, onReset }) => {
             className="space-y-2"
           >
             <div className="flex justify-between items-center">
-              <span className="font-medium text-gray-800">
+              <span className="font-medium text-gray-800 pr-4">
                 {index + 1}. {dragon}
               </span>
               <span className={cn(
