@@ -30,7 +30,7 @@ const Results = ({ results, onReset }) => {
     if (percentage >= TEST_CONSTANTS.THRESHOLD.LOW) {
       return TEST_CONSTANTS.RESULT_CLASSES.LOW;
     }
-    return '';
+    return 'text-gray-400';
   };
 
   const getGradientColors = (score) => {
