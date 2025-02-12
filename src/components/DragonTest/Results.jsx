@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import Button from '../ui/Button';
 import Card from '../ui/Card';
 import { getDeclension } from '../../utils/textHelpers';
@@ -13,6 +13,7 @@ import { cn } from '../../utils/cn';
  * @param {Function} props.onReset - Функция для перезапуска теста
  */
 const Results = ({ results, onReset }) => {
+  const prefersReducedMotion = useReducedMotion();
   const maxScore = TEST_CONSTANTS.MAX_QUESTIONS_PER_DRAGON;
 
   const getScorePercentage = (score) => (score / maxScore) * 100;
@@ -46,23 +47,37 @@ const Results = ({ results, onReset }) => {
     return 'from-red-400 to-red-500';
   };
 
+  // Базовые настройки анимации с учетом предпочтений пользователя
+  const animationConfig = prefersReducedMotion
+    ? { duration: 0 }
+    : { duration: 0.3, ease: "easeOut" };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.2
+        staggerChildren: prefersReducedMotion ? 0 : 0.1
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { y: prefersReducedMotion ? 0 : 20, opacity: 0 },
     visible: {
       y: 0,
-      opacity: 1
+      opacity: 1,
+      transition: animationConfig
     }
+  };
+
+  const progressBarVariants = {
+    hidden: { width: 0 },
+    visible: progress => ({
+      width: `${progress}%`,
+      transition: { ...animationConfig, duration: 0.5 }
+    })
   };
 
   return (
@@ -100,9 +115,8 @@ const Results = ({ results, onReset }) => {
 
             <div className="relative h-4 bg-gray-200 rounded-full overflow-hidden">
               <motion.div
-                initial={{ width: 0 }}
-                animate={{ width: `${getScorePercentage(count)}%` }}
-                transition={{ duration: 0.8, ease: "easeOut" }}
+                custom={getScorePercentage(count)}
+                variants={progressBarVariants}
                 className={cn(
                   'h-full rounded-full bg-gradient-to-r shadow-inner',
                   getGradientColors(count)
@@ -120,7 +134,7 @@ const Results = ({ results, onReset }) => {
             variant="primary"
             fullWidth
             onClick={onReset}
-            className="mt-4"
+            className="transition-all hover:scale-105"
           >
             Пройти тест заново
           </Button>

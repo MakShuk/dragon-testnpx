@@ -33,10 +33,39 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /* Плавные переходы */
-* {
+.transition-all {
   transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform;
   transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
   transition-duration: 150ms;
+}
+
+/* Предотвращение анимаций при загрузке */
+.no-animation {
+  animation: none !important;
+  transition: none !important;
+}
+
+/* Добавляем класс для контроля загрузки */
+:root {
+  --render-ready: 0;
+}
+
+:root[data-render-ready="1"] {
+  --render-ready: 1;
+}
+
+/* Анимации только после полной загрузки */
+@media (prefers-reduced-motion: no-preference) {
+  .animate-on-ready {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+  }
+
+  :root[data-render-ready="1"] .animate-on-ready {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 /* Кастомный скроллбар */
