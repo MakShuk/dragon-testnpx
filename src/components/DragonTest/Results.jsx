@@ -52,6 +52,11 @@ const Results = ({ results, onReset }) => {
     ? { duration: 0 }
     : { duration: 0.3, ease: "easeOut" };
 
+  const handleReset = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+    onReset();
+  };
+
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -133,7 +138,7 @@ const Results = ({ results, onReset }) => {
           <Button
             variant="dragon"
             fullWidth
-            onClick={onReset}
+            onClick={handleReset}
             className="shadow-lg backdrop-blur-sm"
           >
             Пройти тест заново

@@ -11,7 +11,7 @@ import { cn } from '../../utils/cn';
  */
 const Card = ({ children, className = '', title }) => {
   return (
-    <div className='min-h-[80vh] flex items-center justify-center py-8'>
+    <div className='min-h-[95vh] flex items-center justify-center py-8'>
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
