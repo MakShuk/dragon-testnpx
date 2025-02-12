@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Question from './components/DragonTest/Question';
 import Results from './components/DragonTest/Results';
@@ -18,6 +18,28 @@ const DragonTest = () => {
     getResults,
     resetTest,
   } = useTestLogic();
+
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+
+  useEffect(() => {
+    // Скрываем заголовок если тест завершен
+    if (testCompleted) {
+      setIsHeaderVisible(false);
+      return;
+    }
+
+    let lastScrollY = window.scrollY;
+    
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+      // Показываем заголовок только если тест не завершен
+      setIsHeaderVisible((currentScrollY <= lastScrollY || currentScrollY < 50) && !testCompleted);
+      lastScrollY = currentScrollY;
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [testCompleted]); // Добавляем testCompleted в зависимости
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50 py-8 px-4">
@@ -55,8 +77,15 @@ const DragonTest = () => {
       <div className="relative z-10 max-w-4xl mx-auto">
         <motion.h1
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent"
+          animate={{ 
+            opacity: isHeaderVisible ? 1 : 0,
+            y: isHeaderVisible ? 0 : -20,
+            transition: {
+              duration: 0.3,
+              ease: "easeInOut"
+            }
+          }}
+          className="text-3xl font-bold text-center mb-8 bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent fixed top-8 left-0 right-0 z-50"
         >
           Тест на определение ваших драконов
         </motion.h1>
