@@ -21,6 +21,7 @@ const Card = ({ children, className = '', title }) => {
           'max-w-md mx-auto p-9 bg-gradient-to-br from-white to-gray-50 rounded-xl shadow-lg',
           'border border-gray-100',
           'backdrop-blur-sm',
+          'select-none',
           'hover:shadow-xl transition-shadow duration-300',
           className
         )}
