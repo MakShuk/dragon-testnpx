@@ -86,20 +86,13 @@ const Results = ({ results, onReset }) => {
   };
 
   return (
-    <Card title="Результаты теста">
+    <Card title="Результаты">
       <motion.div
         variants={containerVariants}
         initial="hidden"
         animate="visible"
         className="space-y-6"
       >
-        <motion.p
-          variants={itemVariants}
-          className="text-lg font-medium text-gray-700"
-        >
-          Результаты по драконам:
-        </motion.p>
-
         {results.map(([dragon, count], index) => (
           <motion.div
             key={dragon}
